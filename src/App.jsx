@@ -156,7 +156,7 @@ export default function App() {
                 </h1>
                 <div className="mt-5 p-3 bg-[#0d1322]/95 border border-[#b87333]/50 rounded-2xl shadow-inner">
                   <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#0d1322" fgColor="#e0a96d" level="H" />
-                  <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#b0c4de] mt-2 uppercase font-semibold">SCAN FOR PICTURES</span>
+                  <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#b0c4de] mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
                 </div>
               </div>
               <div className="text-[10px] font-cinzel tracking-[0.25em] text-[#b0c4de] uppercase opacity-85 pb-2 flex items-center justify-center gap-1.5 font-semibold">
@@ -239,7 +239,7 @@ export default function App() {
             </h1>
             <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#0b101c', border: '1px solid rgba(184, 115, 51, 0.6)', WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
               <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#0b101c" fgColor="#e0a96d" level="H" />
-              <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#b0c4de] mt-2 uppercase font-semibold">SCAN FOR PICTURES</span>
+              <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#b0c4de] mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
             </div>
           </div>
           <div className="text-[10px] font-cinzel tracking-[0.25em] text-[#b0c4de] uppercase pb-2 flex items-center justify-center gap-1.5 font-semibold">
