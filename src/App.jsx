@@ -48,20 +48,10 @@ export default function App() {
   );
 
   const EditorialMonogram = () => (
-    <div className="flex flex-col items-center justify-center my-0.5">
-      <svg width="42" height="32" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_2px_6px_rgba(217,152,82,0.3)]">
-        <path d="M25 18H62M25 18V82M25 48H54" stroke="url(#mono-grad)" strokeWidth="5" strokeLinecap="square"/>
-        <path d="M20 18H30M20 82H30" stroke="url(#mono-grad)" strokeWidth="2.5"/>
-        <path d="M56 82V18L92 82V18" stroke="url(#mono-grad)" strokeWidth="5" strokeLinejoin="miter" strokeLinecap="square"/>
-        <path d="M51 18H61M87 18H97M51 82H61M87 82H97" stroke="url(#mono-grad)" strokeWidth="2.5"/>
-        <defs>
-          <linearGradient id="mono-grad" x1="20" y1="18" x2="97" y2="82" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#f2d09b"/>
-            <stop offset="0.45" stopColor="#d99852"/>
-            <stop offset="1" stopColor="#a35e22"/>
-          </linearGradient>
-        </defs>
-      </svg>
+    <div className="flex items-center justify-center my-1">
+      <div className="font-cinzel text-base tracking-[0.3em] font-bold bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent border-b border-[#b87333]/40 pb-0.5 px-3 print-gold-solid">
+        F & N
+      </div>
     </div>
   );
 
@@ -81,7 +71,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#18233c] flex flex-col justify-between overflow-x-hidden relative">
       
-      {/* Mobile-Optimized Print Stylesheet with Larger Typography & Clean Vector Rendering */}
+      {/* Print Stylesheet resolving mobile gradient block artifacts */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {
           * {
@@ -92,7 +82,6 @@ export default function App() {
             background-color: #18233c !important;
             width: 100% !important;
             height: 100% !important;
-            font-size: 16px !important;
           }
           .print\\:hidden {
             display: none !important;
@@ -113,7 +102,7 @@ export default function App() {
           }
           .print-card-front, .print-card-back {
             background-color: #243763 !important;
-            background-image: linear-gradient(180deg, #2f467a 0%, #243763 50%, #1a284c 100%) !important;
+            background-image: none !important;
             border: 1px solid #b87333 !important;
             box-shadow: none !important;
             width: 410px !important;
@@ -126,12 +115,12 @@ export default function App() {
             justify-content: space-between !important;
             text-align: center !important;
           }
-          .print-card-back p, .print-card-back span, .print-card-back div {
-            font-size: 12.5px !important;
-            line-height: 1.4 !important;
-          }
-          .print-card-back h2 {
-            font-size: 18px !important;
+          /* Replace unsupported mobile gradients with solid metallic gold for pristine printing */
+          .print-gold-solid {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: #f2d09b !important;
+            color: #f2d09b !important;
           }
         }
       `}} />
@@ -197,7 +186,7 @@ export default function App() {
                 </h1>
                 <div className="mt-5 p-3 bg-[#15203b] border border-[#b87333]/70 rounded-2xl shadow-inner">
                   <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#15203b" fgColor="#e0a96d" level="H" />
-                  <span className="block text-[8px] font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent mt-2 uppercase font-semibold">SCAN FOR PICTURES</span>
+                  <span className="block text-[8px] font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
                 </div>
               </div>
               <div className="text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase opacity-95 pb-2 flex items-center justify-center gap-1.5 font-semibold">
@@ -214,16 +203,16 @@ export default function App() {
               <div className="text-center space-y-1 pt-1">
                 <EditorialMonogram />
                 <p className="italic text-[9.5px] text-[#e2e8f0] leading-tight font-light tracking-wide mt-1">“Ndi uw'umukunzi wanjye, Umukunzi wanjye na we ni uwanjye”</p>
-                <p className="font-cinzel text-[6.5px] text-[#f2d09b] tracking-[0.25em] font-semibold mt-0.5">Indirimbo ya Salomo 6:3</p>
+                <p className="font-cinzel text-[6.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.25em] font-semibold mt-0.5">Indirimbo ya Salomo 6:3</p>
                 
                 {/* Compact Umuryango Wa Section */}
                 <div className="pt-2 space-y-1">
-                  <p className="text-[5.5px] text-[#f2d09b] tracking-[0.3em] uppercase font-semibold">UMURYANGO WA</p>
-                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide text-[#f2d09b]">
+                  <p className="text-[5.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.3em] uppercase font-semibold">UMURYANGO WA</p>
+                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">
                     Rudasingwa J. Baptiste (Vita)
                   </p>
                   <p className="text-[7px] text-[#e2e8f0] italic leading-none">&</p>
-                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide text-[#f2d09b]">
+                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">
                     Nkusi Ntaganda Célestin & Rwigimba Aline
                   </p>
                 </div>
@@ -243,7 +232,7 @@ export default function App() {
 
               {/* Ceremony & Reception Schedule */}
               <div className="text-center py-1">
-                <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] text-[#f2d09b] font-bold mb-1">
+                <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent font-bold mb-1">
                   RECEPTION
                 </h3>
                 <p className="text-[9.5px] text-[#ffffff] font-medium flex items-center justify-center gap-1.5 mb-1">
@@ -264,7 +253,7 @@ export default function App() {
                 </div>
                 <div className="flex justify-between items-center text-[8.5px] px-1">
                   <span className="font-cinzel tracking-[0.2em] text-[#93c5fd]">EST — 2026</span>
-                  <span className="font-cinzel tracking-[0.2em] text-[#f2d09b] font-extrabold">FOREVER</span>
+                  <span className="font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent font-extrabold">FOREVER</span>
                 </div>
               </div>
             </div>
@@ -284,12 +273,12 @@ export default function App() {
             <LuxurySymbol />
           </div>
           <div className="my-auto py-2 flex flex-col items-center">
-            <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] bg-gradient-to-b from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-md">
+            <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] print-gold-solid [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-md">
               FISTON & NANCY
             </h1>
             <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#15203b', border: '1px solid rgba(184, 115, 51, 0.7)' }}>
               <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#15203b" fgColor="#e0a96d" level="H" />
-              <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#f2d09b] mt-2 uppercase font-semibold">SCAN FOR PICTURES</span>
+              <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#f2d09b] mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
             </div>
           </div>
           <div className="text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase pb-2 flex items-center justify-center gap-1.5 font-semibold">
@@ -305,15 +294,15 @@ export default function App() {
           <div className="text-center space-y-1 pt-1">
             <EditorialMonogram />
             <p className="italic text-[9.5px] text-[#e2e8f0] leading-tight font-light tracking-wide mt-1">“Ndi uw'umukunzi wanjye, Umukunzi wanjye na we ni uwanjye”</p>
-            <p className="font-cinzel text-[6.5px] text-[#f2d09b] tracking-[0.25em] font-semibold mt-0.5">Indirimbo ya Salomo 6:3</p>
+            <p className="font-cinzel text-[6.5px] tracking-[0.25em] font-semibold mt-0.5 print-gold-solid">Indirimbo ya Salomo 6:3</p>
             
             <div className="pt-2 space-y-1">
-              <p className="text-[5.5px] text-[#f2d09b] tracking-[0.3em] uppercase font-semibold">UMURYANGO WA</p>
-              <p className="font-cinzel text-[7.5px] font-medium tracking-wide text-[#f2d09b]">
+              <p className="text-[5.5px] tracking-[0.3em] uppercase font-semibold print-gold-solid">UMURYANGO WA</p>
+              <p className="font-cinzel text-[7.5px] font-medium tracking-wide print-gold-solid">
                 Rudasingwa J. Baptiste (Vita)
               </p>
               <p className="text-[7px] text-[#e2e8f0] italic leading-none">&</p>
-              <p className="font-cinzel text-[7.5px] font-medium tracking-wide text-[#f2d09b]">
+              <p className="font-cinzel text-[7.5px] font-medium tracking-wide print-gold-solid">
                 Nkusi Ntaganda Célestin & Rwigimba Aline
               </p>
             </div>
@@ -322,13 +311,13 @@ export default function App() {
           </div>
           <CopperDivider />
           <div className="text-center">
-            <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">FISTON</h2>
+            <h2 className="font-cinzel text-base font-bold tracking-[0.25em] print-gold-solid">FISTON</h2>
             <span className="font-serif italic text-[#e0a96d] text-[11px] leading-none block my-0.5 font-bold">&</span>
-            <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">NANCY</h2>
+            <h2 className="font-cinzel text-base font-bold tracking-[0.25em] print-gold-solid">NANCY</h2>
           </div>
           <CopperDivider />
           <div className="text-center space-y-1">
-            <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] text-[#f2d09b] font-bold mb-1">RECEPTION</h3>
+            <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] font-bold mb-1 print-gold-solid">RECEPTION</h3>
             <p className="text-[9.5px] text-[#ffffff] font-medium flex items-center justify-center gap-1.5 mb-1">
               <Calendar className="w-2.5 h-2.5 text-[#f2d09b]" /> Saturday, December 26, 2026
             </p>
@@ -340,7 +329,7 @@ export default function App() {
           <div className="pt-2 border-t border-[#b87333]/50 space-y-2">
             <div className="flex justify-between items-center text-[8.5px] px-1">
               <span className="font-cinzel tracking-[0.2em] text-[#93c5fd]">EST — 2026</span>
-              <span className="font-cinzel tracking-[0.2em] text-[#f2d09b] font-extrabold">FOREVER</span>
+              <span className="font-cinzel tracking-[0.2em] font-extrabold print-gold-solid">FOREVER</span>
             </div>
           </div>
         </div>
