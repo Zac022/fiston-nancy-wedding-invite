@@ -93,7 +93,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#18233c] flex flex-col justify-between overflow-x-hidden relative">
       
-      {/* Absolute Print Normalization preventing gradient slicing lines */}
+      {/* Mobile-Optimized Print Normalization */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {
           * {
@@ -123,7 +123,7 @@ export default function App() {
             gap: 40px !important;
           }
           .print-card-front, .print-card-back {
-            background-color: #3a528c !important;
+            background-color: #2f467a !important;
             background-image: none !important;
             border: 1px solid #b87333 !important;
             box-shadow: none !important;
@@ -194,8 +194,8 @@ export default function App() {
         >
           <div className={`w-full h-full relative transform-style-3d transition-transform duration-1000 shadow-[0_40px_90px_rgba(5,8,15,0.9),0_0_40px_rgba(184,115,51,0.25)] rounded-3xl ${isFlipped ? 'rotate-y-180' : ''}`}>
             
-            {/* FRONT SIDE */}
-            <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#3a528c] via-[#2c4070] to-[#203159] p-6 flex flex-col justify-between text-center overflow-hidden shadow-2xl">
+            {/* FRONT SIDE (Balanced Mid-Tone Navy Card Shade) */}
+            <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#2f467a] via-[#243763] to-[#1a284c] p-6 flex flex-col justify-between text-center overflow-hidden shadow-2xl">
               <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
               <div className="flex justify-between items-center text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase opacity-95 pt-2 px-2">
                 <span>EST. 2026</span>
@@ -205,9 +205,9 @@ export default function App() {
                 <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] bg-gradient-to-b from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-sm">
                   FISTON & NANCY
                 </h1>
-                <div className="mt-5 p-3 bg-[#1e2c4f] border border-[#b87333]/70 rounded-2xl shadow-inner">
-                  <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1e2c4f" fgColor="#e0a96d" level="H" />
-                  <span className="block text-[8px] font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
+                <div className="mt-5 p-3 bg-[#15203b] border border-[#b87333]/70 rounded-2xl shadow-inner">
+                  <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#15203b" fgColor="#e0a96d" level="H" />
+                  <span className="block text-[8px] font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPERS</span>
                 </div>
               </div>
               <div className="text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase opacity-95 pb-2 flex items-center justify-center gap-1.5 font-semibold">
@@ -218,7 +218,7 @@ export default function App() {
             </div>
 
             {/* BACK SIDE */}
-            <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#3a528c] via-[#2c4070] to-[#203159] px-6 py-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
+            <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#2f467a] via-[#243763] to-[#1a284c] px-6 py-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
               <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
               
               <div className="text-center space-y-1 pt-1">
@@ -269,8 +269,8 @@ export default function App() {
 
               <div className="pt-2 border-t border-[#b87333]/50 space-y-2">
                 <div className="flex gap-2 justify-center">
-                  <span onClick={handleAddToCalendar} className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#1e2c4f] text-[8px] font-cinzel font-bold text-[#f2d09b] cursor-pointer hover:bg-[#283b66]">ADD TO CALENDAR</span>
-                  <a href={venueMapUrl} target="_blank" rel="noopener noreferrer" className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#1e2c4f] text-[8px] font-cinzel font-bold text-[#f2d09b] hover:bg-[#283b66]">VENUE MAP</a>
+                  <span onClick={handleAddToCalendar} className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#15203b] text-[8px] font-cinzel font-bold text-[#f2d09b] cursor-pointer hover:bg-[#202e4d]">ADD TO CALENDAR</span>
+                  <a href={venueMapUrl} target="_blank" rel="noopener noreferrer" className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#15203b] text-[8px] font-cinzel font-bold text-[#f2d09b] hover:bg-[#202e4d]">VENUE MAP</a>
                 </div>
                 <div className="flex justify-between items-center text-[8.5px] px-1">
                   <span className="font-cinzel tracking-[0.2em] text-[#93c5fd]">EST — 2026</span>
@@ -297,8 +297,8 @@ export default function App() {
             <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] print-gold-text [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-md">
               FISTON & NANCY
             </h1>
-            <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#1e2c4f', border: '1px solid rgba(184, 115, 51, 0.7)' }}>
-              <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1e2c4f" fgColor="#e0a96d" level="H" />
+            <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#15203b', border: '1px solid rgba(184, 115, 51, 0.7)' }}>
+              <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#15203b" fgColor="#e0a96d" level="H" />
               <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#f2d09b] mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
             </div>
           </div>
