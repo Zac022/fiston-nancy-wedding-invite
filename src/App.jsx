@@ -91,38 +91,64 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-[#1f2c4a] flex flex-col justify-between overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#18233c] flex flex-col justify-between overflow-x-hidden relative">
       
-      {/* Strict Print Normalization to eliminate raster/gradient slicing */}
+      {/* Comprehensive Print Stylesheet enforcing exact screen colors & layout */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {
-          body, html {
-            background-color: #283963 !important;
+          * {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+          }
+          body, html {
+            background-color: #18233c !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+          .print\\:hidden {
+            display: none !important;
           }
           .print\\:flex {
-            background-color: #283963 !important;
-            border: 1px solid #b87333 !important;
-            box-shadow: none !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
+            display: flex !important;
+            background-color: #18233c !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 40px !important;
           }
-          /* Force solid vector text in print mode to prevent slicing lines */
+          .print-card-front, .print-card-back {
+            background: linear-gradient(180deg, #3a528c 0%, #2c4070 50%, #203159 100%) !important;
+            border: 1px solid rgba(184, 115, 51, 0.7) !important;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8) !important;
+            width: 380px !important;
+            height: 680px !important;
+            border-radius: 1.5rem !important;
+            position: relative !important;
+            padding: 1.5rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            text-align: center !important;
+          }
           .print-gold-text {
-            background: none !important;
-            -webkit-background-clip: initial !important;
-            -webkit-text-fill-color: #f2d09b !important;
-            color: #f2d09b !important;
+            background: linear-gradient(to right, #f2d09b, #d99852, #a35e22) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
           }
         }
       `}} />
 
       {/* Top-Left Ambient Spotlight */}
-      <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-gradient-to-br from-[#5c82bc]/80 via-[#384e85]/40 to-transparent rounded-full blur-[160px] pointer-events-none print:hidden"></div>
+      <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-gradient-to-br from-[#4a6ba8]/50 via-transparent to-transparent rounded-full blur-[160px] pointer-events-none print:hidden"></div>
 
       {/* ================= REFINED MINIMALIST LUXURY NAVIGATION BAR ================= */}
-      <header className="w-full max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between border-b border-[#b87333]/30 bg-[#1f2c4a]/90 backdrop-blur-md z-20 print:hidden">
+      <header className="w-full max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between border-b border-[#b87333]/30 bg-[#18233c]/90 backdrop-blur-md z-20 print:hidden">
         <div className="flex items-center gap-2.5">
           <Heart className="w-3.5 h-3.5 text-[#e0a96d] opacity-90" />
           <span className="font-cinzel text-xs font-semibold tracking-[0.35em] bg-gradient-to-r from-[#f2d09b] via-[#e0a96d] to-[#f2d09b] bg-clip-text text-transparent">
@@ -133,7 +159,7 @@ export default function App() {
         <div className="flex items-center gap-2">
           <button 
             onClick={handlePrintPDF}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#2e426d]/70 hover:bg-[#3d578f] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#283b66]/80 hover:bg-[#354f85] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
             title="Save as PDF / Print"
           >
             <Printer className="w-3 h-3 text-[#b87333]" />
@@ -142,7 +168,7 @@ export default function App() {
 
           <button 
             onClick={() => setIsFlipped(!isFlipped)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#2e426d]/70 hover:bg-[#3d578f] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#283b66]/80 hover:bg-[#354f85] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
           >
             <RefreshCw className={`w-3 h-3 ${isFlipped ? 'rotate-180' : ''} transition-transform duration-500`} />
             {isFlipped ? 'SHOW FRONT' : 'FLIP CARD'}
@@ -150,7 +176,7 @@ export default function App() {
 
           <button 
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#2e426d]/70 hover:bg-[#3d578f] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#b87333]/40 bg-[#283b66]/80 hover:bg-[#354f85] text-[#e0a96d] text-[10px] font-cinzel tracking-widest transition-all cursor-pointer shadow-sm"
           >
             {copied ? <Check className="w-3 h-3 text-green-400" /> : <Share2 className="w-3 h-3 text-[#b87333]" />}
             {copied ? 'COPIED' : 'INVITE'}
@@ -164,10 +190,10 @@ export default function App() {
           className="w-full max-w-[390px] h-[720px] perspective-1500 cursor-pointer group"
           onClick={() => setIsFlipped(!isFlipped)}
         >
-          <div className={`w-full h-full relative transform-style-3d transition-transform duration-1000 shadow-[0_35px_70px_rgba(4,7,14,0.85),0_0_45px_rgba(184,115,51,0.2)] rounded-3xl ${isFlipped ? 'rotate-y-180' : ''}`}>
+          <div className={`w-full h-full relative transform-style-3d transition-transform duration-1000 shadow-[0_40px_90px_rgba(5,8,15,0.9),0_0_40px_rgba(184,115,51,0.25)] rounded-3xl ${isFlipped ? 'rotate-y-180' : ''}`}>
             
             {/* FRONT SIDE */}
-            <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl border border-[#b87333]/60 bg-gradient-to-b from-[#384e85] via-[#283963] to-[#1f2c4a] p-6 flex flex-col justify-between text-center overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#3a528c] via-[#2c4070] to-[#203159] p-6 flex flex-col justify-between text-center overflow-hidden shadow-2xl">
               <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
               <div className="flex justify-between items-center text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase opacity-95 pt-2 px-2">
                 <span>EST. 2026</span>
@@ -177,8 +203,8 @@ export default function App() {
                 <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] bg-gradient-to-b from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-sm">
                   FISTON & NANCY
                 </h1>
-                <div className="mt-5 p-3 bg-[#1f2c4a]/95 border border-[#b87333]/70 rounded-2xl shadow-inner">
-                  <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1f2c4a" fgColor="#e0a96d" level="H" />
+                <div className="mt-5 p-3 bg-[#1e2c4f] border border-[#b87333]/70 rounded-2xl shadow-inner">
+                  <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1e2c4f" fgColor="#e0a96d" level="H" />
                   <span className="block text-[8px] font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
                 </div>
               </div>
@@ -190,22 +216,22 @@ export default function App() {
             </div>
 
             {/* BACK SIDE */}
-            <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl border border-[#b87333]/60 bg-gradient-to-b from-[#384e85] via-[#283963] to-[#1f2c4a] px-6 py-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
+            <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl border border-[#b87333]/70 bg-gradient-to-b from-[#3a528c] via-[#2c4070] to-[#203159] px-6 py-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
               <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
               
               <div className="text-center space-y-1 pt-1">
                 <EditorialMonogram />
                 <p className="italic text-[9.5px] text-[#e2e8f0] leading-tight font-light tracking-wide mt-1">“Ndi uw'umukunzi wanjye, Umukunzi wanjye na we ni uwanjye”</p>
-                <p className="font-cinzel text-[6.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.25em] font-semibold mt-0.5 print-gold-text">Indirimbo ya Salomo 6:3</p>
+                <p className="font-cinzel text-[6.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.25em] font-semibold mt-0.5">Indirimbo ya Salomo 6:3</p>
                 
                 {/* Compact Umuryango Wa Section */}
                 <div className="pt-2 space-y-1">
-                  <p className="text-[5.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.3em] uppercase font-semibold print-gold-text">UMURYANGO WA</p>
-                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent print-gold-text">
+                  <p className="text-[5.5px] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent tracking-[0.3em] uppercase font-semibold">UMURYANGO WA</p>
+                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">
                     Rudasingwa J. Baptiste (Vita)
                   </p>
                   <p className="text-[7px] text-[#e2e8f0] italic leading-none">&</p>
-                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent print-gold-text">
+                  <p className="font-cinzel text-[7.5px] font-medium tracking-wide bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">
                     Nkusi Ntaganda Célestin & Rwigimba Aline
                   </p>
                 </div>
@@ -216,16 +242,16 @@ export default function App() {
               <CopperDivider />
 
               <div className="text-center">
-                <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent print-gold-text">FISTON</h2>
+                <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">FISTON</h2>
                 <span className="font-serif italic text-[#e0a96d] text-[11px] leading-none block my-0.5 font-bold">&</span>
-                <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent print-gold-text">NANCY</h2>
+                <h2 className="font-cinzel text-base font-bold tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent">NANCY</h2>
               </div>
 
               <CopperDivider />
 
               {/* Ceremony & Reception Schedule */}
               <div className="text-center py-1">
-                <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent font-bold mb-1 print-gold-text">
+                <h3 className="font-cinzel text-[9.5px] tracking-[0.25em] bg-gradient-to-r from-[#f2d09b] via-[#d99852] to-[#a35e22] bg-clip-text text-transparent font-bold mb-1">
                   RECEPTION
                 </h3>
                 <p className="text-[9.5px] text-[#ffffff] font-medium flex items-center justify-center gap-1.5 mb-1">
@@ -241,12 +267,12 @@ export default function App() {
 
               <div className="pt-2 border-t border-[#b87333]/50 space-y-2">
                 <div className="flex gap-2 justify-center">
-                  <span onClick={handleAddToCalendar} className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#2e426d] text-[8px] font-cinzel font-bold text-[#f2d09b] cursor-pointer hover:bg-[#3d578f]">ADD TO CALENDAR</span>
-                  <a href={venueMapUrl} target="_blank" rel="noopener noreferrer" className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#2e426d] text-[8px] font-cinzel font-bold text-[#f2d09b] hover:bg-[#3d578f]">VENUE MAP</a>
+                  <span onClick={handleAddToCalendar} className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#1e2c4f] text-[8px] font-cinzel font-bold text-[#f2d09b] cursor-pointer hover:bg-[#283b66]">ADD TO CALENDAR</span>
+                  <a href={venueMapUrl} target="_blank" rel="noopener noreferrer" className="px-3.5 py-1 rounded-full border border-[#b87333]/60 bg-[#1e2c4f] text-[8px] font-cinzel font-bold text-[#f2d09b] hover:bg-[#283b66]">VENUE MAP</a>
                 </div>
                 <div className="flex justify-between items-center text-[8.5px] px-1">
                   <span className="font-cinzel tracking-[0.2em] text-[#93c5fd]">EST — 2026</span>
-                  <span className="font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent font-extrabold print-gold-text">FOREVER</span>
+                  <span className="font-cinzel tracking-[0.2em] bg-gradient-to-r from-[#f2d09b] to-[#d99852] bg-clip-text text-transparent font-extrabold">FOREVER</span>
                 </div>
               </div>
             </div>
@@ -256,21 +282,21 @@ export default function App() {
       </main>
 
       {/* ================= PRINT-ONLY STATIC SPREAD (Front & Back Side-by-Side Landscape) ================= */}
-      <div className="hidden print:flex print:flex-row print:justify-center print:items-center print:gap-16 print:w-screen print:h-screen print:bg-[#283963]" style={{ backgroundColor: '#283963', WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
+      <div className="hidden print:flex">
         
         {/* PRINT FRONT */}
-        <div className="rounded-3xl p-6 flex flex-col justify-between text-center relative shrink-0 z-10" style={{ width: '380px', height: '680px', backgroundColor: '#283963', border: '1px solid #b87333', WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
+        <div className="print-card-front">
           <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
           <div className="flex justify-between items-center text-[10px] font-cinzel tracking-[0.25em] text-[#e2e8f0] uppercase pt-2 px-2">
             <span>EST. 2026</span>
             <LuxurySymbol />
           </div>
           <div className="my-auto py-2 flex flex-col items-center">
-            <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] text-[#e0a96d] [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-md">
+            <h1 className="font-cinzel text-xl font-medium tracking-[0.4em] print-gold-text [writing-mode:vertical-lr] rotate-180 select-none drop-shadow-md">
               FISTON & NANCY
             </h1>
-            <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#1f2c4a', border: '1px solid rgba(184, 115, 51, 0.7)', WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
-              <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1f2c4a" fgColor="#e0a96d" level="H" />
+            <div className="mt-5 p-3 rounded-2xl shadow-inner" style={{ backgroundColor: '#1e2c4f', border: '1px solid rgba(184, 115, 51, 0.7)' }}>
+              <QRCodeSVG value={photoGalleryUrl} size={76} bgColor="#1e2c4f" fgColor="#e0a96d" level="H" />
               <span className="block text-[8px] font-cinzel tracking-[0.2em] text-[#f2d09b] mt-2 uppercase font-semibold">SCAN FOR CIVIL SNIPPETS</span>
             </div>
           </div>
@@ -282,7 +308,7 @@ export default function App() {
         </div>
 
         {/* PRINT BACK */}
-        <div className="rounded-3xl px-6 py-6 flex flex-col justify-between text-center relative shrink-0 z-10" style={{ width: '380px', height: '680px', backgroundColor: '#283963', border: '1px solid #b87333', WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}>
+        <div className="print-card-back">
           <div className="absolute inset-2.5 rounded-2xl border border-[#b87333]/40 pointer-events-none"></div>
           <div className="text-center space-y-1 pt-1">
             <EditorialMonogram />
@@ -333,7 +359,7 @@ export default function App() {
 
       {/* ================= BOTTOM INDICATOR ================= */}
       <footer className="w-full py-4 text-center z-20 print:hidden">
-        <div className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#b87333]/40 bg-[#2e426d] text-[#e0a96d] shadow-md animate-bounce">
+        <div className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[#b87333]/40 bg-[#283b66] text-[#e0a96d] shadow-md animate-bounce">
           ↓
         </div>
       </footer>
