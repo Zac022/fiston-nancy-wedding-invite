@@ -93,7 +93,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#18233c] flex flex-col justify-between overflow-x-hidden relative">
       
-      {/* Comprehensive Print Stylesheet enforcing exact screen colors & layout */}
+      {/* Absolute Print Normalization preventing gradient slicing lines */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media print {
           * {
@@ -123,9 +123,10 @@ export default function App() {
             gap: 40px !important;
           }
           .print-card-front, .print-card-back {
-            background: linear-gradient(180deg, #3a528c 0%, #2c4070 50%, #203159 100%) !important;
-            border: 1px solid rgba(184, 115, 51, 0.7) !important;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8) !important;
+            background-color: #3a528c !important;
+            background-image: none !important;
+            border: 1px solid #b87333 !important;
+            box-shadow: none !important;
             width: 380px !important;
             height: 680px !important;
             border-radius: 1.5rem !important;
@@ -137,9 +138,10 @@ export default function App() {
             text-align: center !important;
           }
           .print-gold-text {
-            background: linear-gradient(to right, #f2d09b, #d99852, #a35e22) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: #f2d09b !important;
+            color: #f2d09b !important;
           }
         }
       `}} />
